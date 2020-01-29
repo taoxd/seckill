@@ -17,8 +17,12 @@ public class SuccessKilledDaoTest {
 
     @Test
     public void testInsertSuccessKilled() {
+        /*
+        第一次 : insertCount = 1
+        第二次 : insertCount = 0
+         */
         long id = 1000L;
-        long phone = 18914490252L;
+        long phone = 18914490250L;
         int i = successKilledDao.insertSuccessKilled(id, phone);
         System.out.println("insertCount = " + i);
     }
