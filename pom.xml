@@ -87,7 +87,17 @@
             <version>1.18.8</version>
             <scope>provided</scope>
         </dependency>
-
+        <!-- 引入 thymeleaf 模板依赖 -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-thymeleaf</artifactId>
+        </dependency>
+        <!-- thymeleaf支持java8时间 -->
+        <dependency>
+            <groupId>org.thymeleaf.extras</groupId>
+            <artifactId>thymeleaf-extras-java8time</artifactId>
+            <version>3.0.0.RELEASE</version>
+        </dependency>
 
     </dependencies>
 

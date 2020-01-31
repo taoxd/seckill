@@ -13,6 +13,14 @@ spring:
       initial-size: 1
       max-active: 20
       test-on-borrow: true
+  thymeleaf:
+    prefix: classpath:/templates/
+    suffix: .html
+    mode: HTML
+    encoding: utf-8
+    servlet:
+      content-type: text/html
+    cache: false
 
 # mybatis-plus相关配置
 mybatis-plus:
