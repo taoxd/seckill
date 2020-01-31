@@ -38,7 +38,7 @@ public class SeckillServiceTest {
     //集成测试代码完整逻辑，注意可重复执行
     @Test
     public void testSeckillLogic() {
-        Long id = 1001L;
+        Long id = 1000L;
         Exposer exposer = seckillService.exportSeckillUrl(id);
         if (exposer.isExposed()) {
             log.info("exposer={}", exposer);
