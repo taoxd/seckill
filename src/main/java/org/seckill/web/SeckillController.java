@@ -91,6 +91,7 @@ public class SeckillController {
     }
 
     @GetMapping("/time/now")
+    @ResponseBody
     public SeckillResult<Long> time(Model model) {
         return new SeckillResult<>(true, TimeUtil.getTimeMillis(LocalDateTime.now()));
     }
