@@ -12,13 +12,13 @@ import org.seckill.exception.RepeatKillException;
 import org.seckill.exception.SeckillCloseException;
 import org.seckill.exception.SeckillException;
 import org.seckill.service.SeckillService;
-import org.seckill.util.TimeUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.DigestUtils;
 
 import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -49,12 +49,12 @@ public class SeckillServiceImpl implements SeckillService {
         if (seckill == null) {
             return new Exposer(false, seckillId);
         }
-        LocalDateTime startTime = seckill.getStartTime();
-        LocalDateTime endTime = seckill.getEndTime();
+        Date startTime = seckill.getStartTime();
+        Date endTime = seckill.getEndTime();
         //系统当前时间
-        LocalDateTime now = LocalDateTime.now();
-        if (now.isBefore(startTime) || now.isAfter(endTime)) {
-            return new Exposer(false, seckillId, TimeUtil.getTimeMillis(now), TimeUtil.getTimeMillis(startTime), TimeUtil.getTimeMillis(endTime));
+        Date now = new Date();
+        if (now.before(startTime) || now.after(endTime)) {
+            return new Exposer(false, seckillId, now.getTime(), startTime.getTime(), endTime.getTime());
         }
         //转化特定字符串的过程,不可逆
         String md5 = getMD5(seckillId);

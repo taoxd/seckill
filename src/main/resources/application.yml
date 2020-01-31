@@ -21,6 +21,8 @@ spring:
     servlet:
       content-type: text/html
     cache: false
+  mvc:
+    static-path-pattern: /static/**
 
 # mybatis-plus相关配置
 mybatis-plus:

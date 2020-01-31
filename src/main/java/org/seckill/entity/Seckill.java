@@ -6,6 +6,7 @@ import lombok.Data;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.util.Date;
 
 /**
  * <p>
@@ -36,15 +37,15 @@ public class Seckill implements Serializable {
     /**
      * 秒杀开始时间
      */
-    private LocalDateTime startTime;
+    private Date startTime;
 
     /**
      * 秒杀结束时间
      */
-    private LocalDateTime endTime;
+    private Date endTime;
 
     /**
      * 创建时间
      */
-    private LocalDateTime createTime;
+    private Date createTime;
 }
