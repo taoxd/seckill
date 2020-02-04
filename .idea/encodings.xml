@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="Encoding" addBOMForNewFiles="with NO BOM">
+  <component name="Encoding" native2AsciiForPropertiesFiles="true" defaultCharsetForPropertiesFiles="UTF-8" addBOMForNewFiles="with NO BOM">
     <file url="file://$PROJECT_DIR$" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/src/main/java/org/seckill/dao/SeckillDao.java" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/src/main/java/org/seckill/dao/SuccessKilledDao.java" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/src/main/java/org/seckill/entity/Seckill.java" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/src/main/java/org/seckill/entity/SuccessKilled.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/java/org/seckill/dao/SeckillDao.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/org/seckill/dao/SuccessKilledDao.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/org/seckill/entity/Seckill.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/org/seckill/entity/SuccessKilled.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/resources/mapper/SeckillMapper.xml" charset="GBK" />
     <file url="file://$PROJECT_DIR$/src/main/resources/mapper/SuccessKilledMapper.xml" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/src/test/java/org/seckill/MpGenerator.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/test/java/org/seckill/MpGenerator.java" charset="UTF-8" />
+    <file url="PROJECT" charset="UTF-8" />
   </component>
 </project>

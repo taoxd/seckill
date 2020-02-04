@@ -3,6 +3,7 @@ package org.seckill.service.impl;
 import lombok.extern.slf4j.Slf4j;
 import org.seckill.dao.SeckillDao;
 import org.seckill.dao.SuccessKilledDao;
+import org.seckill.dao.cache.RedisDao;
 import org.seckill.dto.Exposer;
 import org.seckill.dto.SeckillExecution;
 import org.seckill.entity.Seckill;
@@ -16,6 +17,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.DigestUtils;
+import org.springframework.util.ObjectUtils;
 
 import java.time.LocalDateTime;
 import java.util.Date;
@@ -28,6 +30,8 @@ public class SeckillServiceImpl implements SeckillService {
     private SeckillDao seckillDao;
     @Autowired
     private SuccessKilledDao successKilledDao;
+    @Autowired
+    private RedisDao redisDao;
 
     //md5盐值字符串，用于混淆MD5
     private final String slat = "jkdjskdjnnbn56421216%^^&^%$%HJGFVBNB";
@@ -44,10 +48,19 @@ public class SeckillServiceImpl implements SeckillService {
 
     @Override
     public Exposer exportSeckillUrl(Long seckillId) {
-        Seckill seckill = seckillDao.queryById(seckillId);
-        //秒杀商品不存在
-        if (seckill == null) {
-            return new Exposer(false, seckillId);
+        //优化点:缓存优化:超时的基础上维护一致性
+        //1.访问redis
+        Seckill seckill = redisDao.getSeckill(seckillId);
+        if (ObjectUtils.isEmpty(seckill)) {
+            //2.访问数据库
+            seckill = seckillDao.queryById(seckillId);
+            //秒杀商品不存在
+            if (seckill == null) {
+                return new Exposer(false, seckillId);
+            } else {
+                //3.放入redis
+                redisDao.putSeckill(seckill);
+            }
         }
         Date startTime = seckill.getStartTime();
         Date endTime = seckill.getEndTime();

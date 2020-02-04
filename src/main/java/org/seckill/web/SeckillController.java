@@ -36,11 +36,14 @@ public class SeckillController {
 
     @GetMapping("/{seckillId}/detail")
     public String detail(@PathVariable("seckillId") Long seckillId, Model model) {
+        //从本质来说，forword转发是服务器上的行为，而redirect重定向是客户端的行为
         if (seckillId == null) {
+            //重定向，浏览器重新请求地址，所以地址栏显示的是新的地址。
             return "redirect:/seckill/list";
         }
         Seckill seckill = seckillService.getById(seckillId);
         if (seckill == null) {
+            //转发，服务器内部跳转，携带request的信息，网址不变
             return "forward:/seckill/list";
         }
         model.addAttribute("seckill", seckill);
