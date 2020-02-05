@@ -3,12 +3,12 @@ package org.seckill.dao;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
-import org.mybatis.spring.annotation.MapperScan;
 import org.seckill.entity.Seckill;
 import org.springframework.stereotype.Repository;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Map;
 
 /**
  * <p>
@@ -43,5 +43,12 @@ public interface SeckillDao extends BaseMapper<Seckill> {
      * @return
      */
     List<Seckill> queryAll(@Param("offset") int offset, @Param("limit") int limit);
+
+    /**
+     * 使用存储过程执行秒杀
+     *
+     * @param paramMap
+     */
+    void killByProcedure(Map<String, Object> paramMap);
 
 }
